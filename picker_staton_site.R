@@ -16,8 +16,7 @@ updatedate <-updatedate %>% gsub(pattern="(",replacement="",fixed = T) %>%
 
 if (updatedate == "20220721" ){ 
   print(paste0( "資料不須更新，目前版本:", updatedate,"，請讀取檔案"))
-  stn_adress <- readRDS(paste0('D:/R_workspace/Crawler/Data/stn_data/stn_adress_',updatedate,'.RDS'))
-  #print(noquote("stn_adress <- readRDS('D:/R_workspace/Crawler/Data/stn_data/stn_adress_20220628.RDS')"))
+  stn_adress <- readRDS(paste0('D:/R_workspace/Crawler/Data/station_data/stn_adress_',updatedate,'.RDS'))
   rm(updatedate)
   } else{ 
   content<- read_html("https://e-service.cwb.gov.tw/wdps/obs/state.htm") %>% 
@@ -35,7 +34,7 @@ if (updatedate == "20220721" ){
   stn_adress <- stn_adress[-c(which(stn_adress$stationID %in%c("466850","467790","467440","C0V500") == 1)),]# 無資料的站號
   
   rownames(stn_adress) <- c(1:length(stn_adress$stationID))
-  saveRDS(stn_adress,paste0("D:/R_workspace/Crawler/Data/stn_data/stn_adress_"
+  saveRDS(stn_adress,paste0("D:/R_workspace/Crawler/Data/station_data/stn_adress_"
                             ,updatedate, ".RDS"))
   print(paste("資料有更新，目前版本:",updatedate))
   rm(content)
