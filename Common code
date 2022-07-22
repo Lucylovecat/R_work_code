@@ -1,0 +1,13 @@
+##數字調整
+
+round(x , disgit =2 )   #  四捨五入
+ 
+formatC(x, width= 2, flag ="0")# 數字前埔0
+
+unique()   #找尋唯一值
+
+scale()  #  Z分數
+
+yearmon = as.numeric(format(date, format = "%Y%m")
+
+
